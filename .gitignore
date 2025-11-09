@@ -1,0 +1,18 @@
+# Arquivos do Power BI
+*.pbix
+
+# Ambientes Virtuais Python
+venv/
+.venv/
+
+# Pastas e arquivos de logs do Airflow que não devem ser versionados
+logs/
+airflow_home/
+airflow-webserver.pid
+webserver_config.py
+# Se você não modificou o .cfg do Airflow
+airflow.cfg
+
+# Arquivos de dados grandes ou temporários
+*.csv
+dados_brutos/

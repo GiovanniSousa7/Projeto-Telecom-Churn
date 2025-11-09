@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  airflow:
+    image: apache/airflow:2.7.1
+    container_name: airflow_churn
+    restart: unless-stopped
+    environment:
+      # configurações do Airflow
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+      AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'false'
+      AIRFLOW__CORE__LOAD_DEFAULT_CONNECTIONS: 'false'
+      AIRFLOW__SCHEDULER__MIN_FILE_PROCESS_INTERVAL: "10"
+      # pacotes python adicionais a instalar automaticamente pela imagem
+      _PIP_ADDITIONAL_REQUIREMENTS: "pandas scikit-learn xgboost==1.7.2 sqlalchemy pymysql joblib"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./models:/opt/airflow/models
+      - ./scripts:/opt/airflow/scripts
+      - ./airflow_home:/opt/airflow
+    ports:
+      - "8080:8080"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    command: >
+      bash -c "
+      airflow db init && \
+      airflow users create --username admin --password admin --firstname Admin --lastname User --role Admin --email admin@example.com || true && \
+      airflow standalone
+      "
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  airflow_db: {}

@@ -1,0 +1,71 @@
+{
+  "name": "Tema Telecom Churn - Ajustado",
+  "dataColors": [
+    "#003c78",
+    "#0066cc",
+    "#ff6600",
+    "#99cc33",
+    "#cccccc",
+    "#ff9933",
+    "#666666",
+    "#99ccff"
+  ],
+  "visualStyles": {
+    "*": {
+      "*": {
+        "title": [
+          {
+            "show": true,
+            "fontSize": 16,
+            "fontColor": { "solid": { "color": "#212121" } },
+            "alignment": "left"
+          }
+        ],
+        "outlines": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#e0e0e0" } },
+            "weight": 1
+          }
+        ]
+      }
+    },
+    "slicer": {
+      "*": {
+        "header": [
+          {
+            "show": true,
+            "fontSize": 12,
+            "fontColor": { "solid": { "color": "#212121" } }
+          }
+        ]
+      }
+    },
+    "card": {
+      "*": {
+        "title": [
+          {
+            "show": true,
+            "fontSize": 12,
+            "fontColor": { "solid": { "color": "#212121" } }
+          }
+        ]
+      }
+    }
+  },
+  "textClasses": {
+    "label": {
+      "color": "#424242",
+      "fontFace": "Segoe UI",
+      "fontSize": 11
+    },
+    "callout": {
+      "color": "#003c78",
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 28
+    }
+  },
+  "background": "#ffffff",
+  "foreground": "#212121",
+  "tableAccent": "#0066cc"
+}
